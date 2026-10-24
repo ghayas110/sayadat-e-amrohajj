@@ -79,7 +79,7 @@ export default function RecordsPage() {
               <span>Refresh</span>
             </button>
             <a
-              href="http://localhost:3333"
+              href="https://sayadat-e-amroha.sanity.studio"
               target="_blank"
               rel="noreferrer"
               className="px-3 py-1.5 text-xs bg-amber-500 hover:bg-amber-400 text-emerald-950 font-medium rounded-md shadow transition flex items-center gap-1.5"

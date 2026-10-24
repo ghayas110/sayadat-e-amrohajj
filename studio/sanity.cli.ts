@@ -5,4 +5,7 @@ export default defineCliConfig({
     projectId: 'rohuunpd',
     dataset: 'production',
   },
+  deployment: {
+    appId: 'umtu8mhm0845aorev4s464q3',
+  },
 })
