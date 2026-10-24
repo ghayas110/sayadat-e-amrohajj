@@ -1,0 +1,13 @@
+{
+  "name": "sayadat-e-amroha-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix web",
+    "dev:web": "npm run dev --prefix web",
+    "dev:studio": "npm run dev --prefix studio",
+    "build:web": "npm run build --prefix web",
+    "build:studio": "npm run build --prefix studio",
+    "build": "npm run build:web && npm run build:studio"
+  }
+}
