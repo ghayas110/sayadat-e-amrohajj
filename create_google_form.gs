@@ -1,12 +1,12 @@
 function createSayadatAmrohaForm() {
   // Create the form
-  var form = FormApp.create("Sayadat-e-Amroha Lineage Record | معلومات برائے شجرۂ نسب");
+  var form = FormApp.create("Sadat-e-Amroha Nasab Nama | معلومات برائے نسب نامہ");
   
   form.setDescription(
-    "Sayadat-e-Amroha Lineage Record (New Computerized Edition)\n" +
-    "سیادتِ امروحہ - خاندانی شجرۂ نسب (نیا کمپیوٹرائزڈ ایڈیشن)\n\n" +
+    "Sadat-e-Amroha Nasab Nama (New Computerized Edition)\n" +
+    "ساداتِ امروہہ - خاندانی نسب نامہ (نیا کمپیوٹرائزڈ ایڈیشن)\n\n" +
     "Following the publication of the genealogical book Kausar-ul-Ansab by Syed Nazar-e-Hasnain Naqvi (Mohalla Gher Manaf) from Karachi in 1999, " +
-    "information is now being collected to publish a new computerized edition titled 'Sayadat-e-Amroha Lineage Record' after 27 years. " +
+    "information is now being collected to publish a new computerized edition titled 'Sadat-e-Amroha Nasab Nama' after 27 years. " +
     "You are requested to fill out this form with your and your family's lineage details.\n\n" +
     "نوٹ: یہ فارم اردو یا انگریزی دونوں میں پُر کیا جا سکتا ہے۔\n" +
     "(This form can be filled out in either Urdu or English)"
@@ -16,7 +16,7 @@ function createSayadatAmrohaForm() {
   // SECTION 1: Head of Family / Lineage Details
   // -------------------------------------------------------------
   var sec1 = form.addSectionHeaderItem();
-  sec1.setTitle("1. Family Head & Shijra Details | سرپرست اور خاندانی شجرہ");
+  sec1.setTitle("1. Family Head & Nasab Nama Details | سرپرست نسب نامہ");
   sec1.setHelpText("Please enter the primary person's lineage details.");
 
   // Name
@@ -33,7 +33,7 @@ function createSayadatAmrohaForm() {
 
   // Mohalla in Amroha
   var item3 = form.addTextItem();
-  item3.setTitle("Mohalla in Amroha / امروحہ کا محلہ");
+  item3.setTitle("Mohalla in Amroha / امروہہ کا محلہ");
   item3.setHelpText("e.g. Mohalla Tripolia, Gher Manaf, Chhappah, Sadat, Shafat Pota, Danishmandan, etc.");
   item3.setRequired(true);
 
@@ -108,8 +108,8 @@ function createSayadatAmrohaForm() {
   bookDetails.setTitle("Book Information / کتاب کی تفصیلات");
   bookDetails.setHelpText(
     "• Book Details: Approximately 250 pages, printed on high-quality paper with color printing and elegant cover.\n" +
-    "• Standard Book Price: Rs. 5,000 (Five Thousand Rupees)\n" +
-    "• Photo Inclusion Option: Additional Rs. 2,000 (Total Rs. 7,000) to include a passport-size color photograph in the book.\n" +
+    "• Standard Book Price: Rs. 6,000 (Six Thousand Rupees)\n" +
+    "• Photo Inclusion Option: Additional Rs. 2,000 (Total Rs. 8,000) to include a passport-size color photograph in the book.\n" +
     "• Courier/delivery charges to be paid by recipient upon delivery.\n\n" +
     "Bank Details for Payment / بینک اکاؤنٹ کی تفصیلات:\n" +
     "• Account Title: Syed Sibte Said Naqvi\n" +
@@ -124,9 +124,9 @@ function createSayadatAmrohaForm() {
   var itemBooking = form.addMultipleChoiceItem();
   itemBooking.setTitle("Advance Booking Selection / پیشگی بکنگ کا انتخاب");
   itemBooking.setChoiceValues([
-    "Standard Book - Rs. 5,000 / عام کتاب (5,000 روپے)",
-    "Book with Color Photograph Included - Rs. 7,000 / کتاب مع پاسپورٹ سائز رنگین تصویر (7,000 روپے)",
-    "Only submitting family records / فی الحال صرف شجرہ جمع کروانا ہے (کتاب بعد میں)"
+    "Standard Book - Rs. 6,000 / عام کتاب (6,000 روپے)",
+    "Book with Color Photograph Included - Rs. 8,000 / کتاب مع پاسپورٹ سائز رنگین تصویر (8,000 روپے)",
+    "Only submitting family records / فی الحال صرف نسب نامہ جمع کروانا ہے (کتاب بعد میں)"
   ]);
   itemBooking.setRequired(true);
 

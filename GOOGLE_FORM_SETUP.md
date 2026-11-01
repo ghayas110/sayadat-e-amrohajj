@@ -1,4 +1,4 @@
-# Sayadat-e-Amroha Lineage Record
+# Sadat-e-Amroha Nasab Nama
 ## Google Form Setup Guide (Option 1: Multi-line Paragraphs)
 
 This setup uses **Option 1 (Multi-line Paragraphs)**, which is the most flexible approach for handling variable numbers of sons and daughters.
@@ -24,25 +24,25 @@ You can generate this exact Google Form automatically inside your Google Drive i
 If you prefer building it manually, go to [forms.new](https://forms.new) and add the following questions:
 
 #### Form Title:
-> **Sayadat-e-Amroha Lineage Record | معلومات برائے شجرۂ نسب**
+> **Sadat-e-Amroha Nasab Nama | معلومات برائے نسب نامہ**
 > *(New Computerized Edition / نیا کمپیوٹرائزڈ ایڈیشن)*
 
 #### Form Description:
 ```text
-Following the publication of the genealogical book Kausar-ul-Ansab by Syed Nazar-e-Hasnain Naqvi (Mohalla Gher Manaf) from Karachi in 1999, information is now being collected to publish a new computerized edition of the book titled "Sayadat-e-Amroha Lineage Record" after 27 years. You are requested to fill out this form with your and your family's details.
+Following the publication of the genealogical book Kausar-ul-Ansab by Syed Nazar-e-Hasnain Naqvi (Mohalla Gher Manaf) from Karachi in 1999, information is now being collected to publish a new computerized edition of the book titled "Sadat-e-Amroha Nasab Nama" after 27 years. You are requested to fill out this form with your and your family's details.
 
 (This form can be filled out in either Urdu or English / یہ فارم اردو یا انگریزی دونوں میں پُر کیا جا سکتا ہے)
 ```
 
 ---
 
-### Section 1: Lineage & Family Head (سرپرست اور خاندانی شجرہ)
+### Section 1: Lineage & Family Head (سرپرست نسب نامہ)
 
 | # | Question Title | Question Type | Required | Description / Help Text |
 |---|---|---|---|---|
 | 1 | Name (Syed) / نام مع سید | Short answer | Yes | e.g. Syed Muhammad Ali Naqvi |
 | 2 | Father's Name / والد کا نام | Short answer | Yes | e.g. Syed Nazar-e-Hasnain Naqvi |
-| 3 | Mohalla in Amroha / امروحہ کا محلہ | Short answer | Yes | e.g. Mohalla Tripolia, Gher Manaf, Chhappah, Sadat, Danishmandan, etc. |
+| 3 | Mohalla in Amroha / امروہہ کا محلہ | Short answer | Yes | e.g. Mohalla Tripolia, Gher Manaf, Chhappah, Sadat, Danishmandan, etc. |
 | 4 | Reference Page No. in Kausar-ul-Ansab / کوثر الانساب کا حوالہ صفحہ | Short answer | No | اگر پرانی کتاب کا صفحہ معلوم ہو تو درج کریں (Leave blank if unknown) |
 | 5 | Wife's Name with Father's Name & Mohalla / زوجہ کا نام مع ولدیت و محلہ | Short answer | No | e.g. Syeda Zahra Bano d/o Syed Akhtar Hussain (Mohalla Chhappah) |
 
@@ -104,8 +104,8 @@ Click **Add Section**:
 - Section Title: **4. Advance Booking & Bank Details / پیشگی بکنگ**
 - Section Description:
   ```text
-  Book Price: Rs. 5,000 (Five Thousand Rupees)
-  Photo Option: Additional Rs. 2,000 to include a passport-size color photograph (Total Rs. 7,000)
+  Book Price: Rs. 6,000 (Six Thousand Rupees)
+  Photo Option: Additional Rs. 2,000 to include a passport-size color photograph (Total Rs. 8,000)
   Book Details: ~250 pages, color printing on high-quality paper, elegant cover. Delivery charges paid by recipient upon delivery.
 
   Bank Details / بینک اکاؤنٹ کی تفصیلات:
@@ -119,7 +119,7 @@ Click **Add Section**:
 
 | # | Question Title | Question Type | Required | Options / Notes |
 |---|---|---|---|---|
-| 10 | Advance Booking Selection / پیشگی بکنگ کا انتخاب | Multiple Choice | Yes | • Standard Book - Rs. 5,000<br>• Book with Color Photo - Rs. 7,000<br>• Only Submitting Family Lineage (No book order now) |
+| 10 | Advance Booking Selection / پیشگی بکنگ کا انتخاب | Multiple Choice | Yes | • Standard Book - Rs. 6,000<br>• Book with Color Photo - Rs. 8,000<br>• Only Submitting Family Lineage (No book order now) |
 | 11 | Payment Reference / Slip Note / رسید کا حوالہ | Short answer | No | Enter Transaction ID / Slip No. (Send screenshot to WhatsApp 0345-2695417) |
 | 12 | Name of Person Submitting Form / فارم بھرنے والے کا نام | Short answer | Yes | Name of respondent |
 | 13 | Submission Date / تاریخ | Date (or Short answer) | No | DD/MM/YYYY |

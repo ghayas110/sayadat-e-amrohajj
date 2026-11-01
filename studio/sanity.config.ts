@@ -5,7 +5,7 @@ import { schemaTypes } from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Sayadat-e-Amroha Lineage Studio',
+  title: 'Sadat-e-Amroha Nasab Nama Studio',
 
   projectId: 'rohuunpd',
   dataset: 'production',

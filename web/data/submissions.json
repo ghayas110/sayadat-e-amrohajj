@@ -1,0 +1,76 @@
+[
+  {
+    "id": "ICnSA1SUX1oiPuacQkPEn0",
+    "_type": "lineageRecord",
+    "name": "سید سبط قائم",
+    "fatherName": "سید سبط قاسم",
+    "source": "form",
+    "mohalla": "Tripolia",
+    "khandan": "33",
+    "referencePageNumber": "169",
+    "parentRecord": {
+      "_type": "reference",
+      "_ref": "kaa1999-tripolia-sibt-qasim",
+      "_weak": true
+    },
+    "updatesRecord": {
+      "_type": "reference",
+      "_ref": "kaa1999-tripolia-sibt-qaim",
+      "_weak": true
+    },
+    "wifeDetails": {},
+    "sons": [
+      {
+        "_key": "son_0_1793455430401",
+        "name": "سید علی قائم",
+        "isDeceased": false
+      },
+      {
+        "_key": "son_1_1793455430401",
+        "name": "سید حسن قائم",
+        "occupationOrNotes": "Karachi",
+        "isDeceased": false,
+        "photo": {
+          "_type": "image",
+          "asset": {
+            "_type": "reference",
+            "_ref": "image-2bd792f02c41b877e61ce019b9bc1dc777c6ab5f-903x1200-jpg"
+          }
+        }
+      }
+    ],
+    "daughters": [
+      {
+        "_key": "daughter_0_1793455430401",
+        "name": "سکینہ بتول",
+        "maritalStatus": "married",
+        "husbandName": "",
+        "husbandFatherName": "",
+        "husbandMohalla": ""
+      },
+      {
+        "_key": "daughter_1_1793455430401",
+        "name": "ردا سکینہ",
+        "maritalStatus": "married",
+        "husbandName": "",
+        "husbandFatherName": "",
+        "husbandMohalla": ""
+      }
+    ],
+    "contactDetails": {
+      "phone": "03002661456",
+      "address": "House A12, Sector X8, Gulshan e Maymar"
+    },
+    "advanceBooking": {
+      "bookingType": "submission_only",
+      "paymentStatus": "na"
+    },
+    "submissionMeta": {
+      "submitterName": "Taha Ali",
+      "submittedAt": "2026-10-31T14:03:50.401Z",
+      "isApprovedForBook": false
+    },
+    "savedToSanity": true,
+    "hasToken": true
+  }
+]

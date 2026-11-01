@@ -1,8 +1,26 @@
 import { defineType, defineField } from 'sanity'
+import { KHANDANS, MOHALLAS, findKhandan } from './amrohaIndex'
+import { SearchableStringInput } from '../components/SearchableStringInput'
+
+// Families typed in from the 1999 book rather than submitted through the website form
+export const BOOK_SOURCE = 'kausar-ul-ansab-1999'
+
+const isFromBook = (document: unknown) => (document as { source?: string } | undefined)?.source === BOOK_SOURCE
+
+// Contact details are required for form submissions, but the book has none for its families
+const requiredUnlessFromBook = (value: unknown, context: { document?: unknown }) =>
+  isFromBook(context.document) || (typeof value === 'string' && value.trim()) ? true : 'Required'
+
+const birthOrderField = defineField({
+  name: 'birthOrder',
+  title: 'Position among brothers & sisters / ترتیب',
+  type: 'number',
+  description: 'Optional. 1 = eldest. Used to order sons and daughters together in the family tree, as in the book.',
+})
 
 export const lineageRecord = defineType({
   name: 'lineageRecord',
-  title: 'Lineage Record (شجرۂ نسب)',
+  title: 'Nasab Nama (نسب نامہ)',
   type: 'document',
   fields: [
     defineField({
@@ -18,23 +36,27 @@ export const lineageRecord = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'mohalla',
-      title: 'Mohalla in Amroha / امروحہ کا محلہ',
+      name: 'source',
+      title: 'Source / ماخذ',
       type: 'string',
       options: {
         list: [
-          { title: 'Mohalla Tripolia / محلہ ترپولیا', value: 'Tripolia' },
-          { title: 'Mohalla Gher Manaf / محلہ گھیر مناف', value: 'Gher Manaf' },
-          { title: 'Mohalla Chhappah / محلہ چھپاہ', value: 'Chhappah' },
-          { title: 'Mohalla Sadat / محلہ سادات', value: 'Sadat' },
-          { title: 'Mohalla Shafat Pota / محلہ شفاعت پوتا', value: 'Shafat Pota' },
-          { title: 'Mohalla Danishmandan / محلہ دانشمندان', value: 'Danishmandan' },
-          { title: 'Mohalla Kot / محلہ کوٹ', value: 'Kot' },
-          { title: 'Mohalla Qazi Zada / محلہ قاضی زادہ', value: 'Qazi Zada' },
-          { title: 'Other Mohalla / دیگر محلہ', value: 'Other' },
+          { title: 'Website form', value: 'form' },
+          { title: 'Kausar-ul-Ansab (1999) book', value: BOOK_SOURCE },
         ],
+        layout: 'radio',
+        direction: 'horizontal',
       },
-      validation: (Rule) => Rule.required(),
+      initialValue: 'form',
+    }),
+    defineField({
+      name: 'mohalla',
+      title: 'Mohalla in Amroha / امروہہ کا محلہ',
+      type: 'string',
+      options: {
+        list: MOHALLAS.map((m) => ({ title: `${m.ur} / ${m.en}`, value: m.value })),
+      },
+      components: { input: SearchableStringInput },
     }),
     defineField({
       name: 'customMohalla',
@@ -43,10 +65,77 @@ export const lineageRecord = defineType({
       hidden: ({ parent }) => parent?.mohalla !== 'Other',
     }),
     defineField({
+      name: 'khandan',
+      title: 'Khandan (Kausar-ul-Ansab index) / خاندان',
+      type: 'string',
+      description: 'Family branch from the index of Kausar-ul-Ansab (1999), with the page its section starts on',
+      options: {
+        list: [
+          ...KHANDANS.map((k) => ({
+            title: `${k.serial}۔ ${k.name} — ${k.residence} (صفحہ ${k.page})`,
+            value: String(k.serial),
+          })),
+          { title: 'Not listed / دیگر خاندان', value: 'other' },
+        ],
+      },
+      components: { input: SearchableStringInput },
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const mohalla = (context.parent as { mohalla?: string } | undefined)?.mohalla
+          const khandan = findKhandan(value as string | undefined)
+          if (!khandan || !mohalla || mohalla === 'Other') return true
+          return khandan.mohallas.includes(mohalla)
+            ? true
+            : { message: 'This khandan is not listed under the selected mohalla', level: 'warning' }
+        }),
+    }),
+    defineField({
+      name: 'parentRecord',
+      title: "Father's Record (for family tree) / والد کا ریکارڈ",
+      type: 'reference',
+      to: [{ type: 'lineageRecord' }],
+      weak: true,
+      description:
+        "Optional. Links this family under the father's own record in the family tree. Without it, records are joined when the father's name matches a son in another record.",
+    }),
+    defineField({
+      name: 'fatherInRecord',
+      title: "Father listed as a son in / والد بطور بیٹا درج",
+      type: 'object',
+      description:
+        'Set by the website form when the father was picked from the ledger but has no record of his own: the record that lists him among its sons.',
+      fields: [
+        defineField({ name: 'record', title: 'Record', type: 'reference', to: [{ type: 'lineageRecord' }], weak: true }),
+        defineField({ name: 'sonName', title: "Father's name as listed", type: 'string' }),
+      ],
+    }),
+    defineField({
+      name: 'updatesRecord',
+      title: 'Corrects record / اس ریکارڈ کی تصحیح',
+      type: 'reference',
+      to: [{ type: 'lineageRecord' }],
+      weak: true,
+      description:
+        'Set by the website form when the person picked himself from the ledger. In the family tree this record replaces that one; delete this record to undo.',
+    }),
+    defineField({
+      name: 'customKhandan',
+      title: 'Khandan details (if not listed) / خاندان کی تفصیل',
+      type: 'string',
+      hidden: ({ parent }) => parent?.khandan !== 'other' && parent?.mohalla !== 'Other',
+    }),
+    defineField({
       name: 'referencePageNumber',
       title: 'Reference Page in Kausar-ul-Ansab (1999) / کوثر الانساب کا حوالہ صفحہ نمبر',
       type: 'string',
       description: 'Page number in the 1999 edition by Syed Nazar-e-Hasnain Naqvi (if known)',
+    }),
+    defineField({
+      name: 'profileImage',
+      title: 'Profile Photo (Optional) / تصویر (اختیاری)',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Optional photo of the family head. Photos of wife and daughters are not collected.',
     }),
     defineField({
       name: 'wifeDetails',
@@ -98,11 +187,19 @@ export const lineageRecord = defineType({
               type: 'boolean',
               initialValue: false,
             }),
+            defineField({
+              name: 'photo',
+              title: "Son's Photo (Optional) / تصویر (اختیاری)",
+              type: 'image',
+              options: { hotspot: true },
+            }),
+            birthOrderField,
           ],
           preview: {
             select: {
               title: 'name',
               subtitle: 'occupationOrNotes',
+              media: 'photo',
             },
           },
         },
@@ -156,6 +253,13 @@ export const lineageRecord = defineType({
               type: 'string',
               hidden: ({ parent }) => parent?.maritalStatus === 'unmarried',
             }),
+            defineField({
+              name: 'notes',
+              title: 'Notes (اختیاری)',
+              type: 'string',
+              description: 'e.g. عرف (nickname), زوجہ ثانی',
+            }),
+            birthOrderField,
           ],
           preview: {
             select: {
@@ -183,14 +287,14 @@ export const lineageRecord = defineType({
           name: 'phone',
           title: 'WhatsApp / Phone Number',
           type: 'string',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule) => Rule.custom(requiredUnlessFromBook),
         }),
         defineField({
           name: 'address',
           title: 'Courier Delivery Address',
           type: 'text',
           rows: 3,
-          validation: (Rule) => Rule.required(),
+          validation: (Rule) => Rule.custom(requiredUnlessFromBook),
         }),
       ],
     }),
@@ -205,8 +309,8 @@ export const lineageRecord = defineType({
           type: 'string',
           options: {
             list: [
-              { title: 'Standard Book (Rs. 5,000)', value: 'standard_5000' },
-              { title: 'Book with Color Photo (Rs. 7,000)', value: 'with_photo_7000' },
+              { title: 'Standard Book (Rs. 6,000)', value: 'standard_5000' },
+              { title: 'Book with Color Photo (Rs. 8,000)', value: 'with_photo_7000' },
               { title: 'Only Submitting Lineage (No book order)', value: 'submission_only' },
             ],
             layout: 'radio',
@@ -222,6 +326,18 @@ export const lineageRecord = defineType({
           title: 'Deposit Slip / Receipt Photo',
           type: 'image',
           options: { hotspot: true },
+        }),
+        defineField({
+          name: 'paymentSlipFile',
+          title: 'Deposit Slip / Receipt (PDF)',
+          type: 'file',
+          description: 'Used when the slip was sent as a PDF instead of a photo',
+        }),
+        defineField({
+          name: 'verifiedAt',
+          title: 'Payment Marked Paid At',
+          type: 'datetime',
+          readOnly: true,
         }),
         defineField({
           name: 'colorPhoto',
@@ -269,8 +385,26 @@ export const lineageRecord = defineType({
           initialValue: false,
         }),
         defineField({
+          name: 'originalSpellings',
+          title: 'Names Typed in English',
+          description: 'The form turned these into Urdu before saving. Check the Urdu against what the family typed.',
+          type: 'array',
+          readOnly: true,
+          of: [
+            {
+              type: 'object',
+              fields: [
+                { name: 'english', title: 'Typed', type: 'string' },
+                { name: 'urdu', title: 'Saved as', type: 'string' },
+                { name: 'guessed', title: 'Not in the book (spelling guessed)', type: 'boolean' },
+              ],
+              preview: { select: { title: 'urdu', subtitle: 'english' } },
+            },
+          ],
+        }),
+        defineField({
           name: 'editorialNotes',
-          title: 'Editorial / Shijra Notes',
+          title: 'Editorial / Nasab Nama Notes',
           type: 'text',
           rows: 3,
         }),
@@ -283,11 +417,13 @@ export const lineageRecord = defineType({
       father: 'fatherName',
       mohalla: 'mohalla',
       booking: 'advanceBooking.bookingType',
+      media: 'profileImage',
     },
-    prepare({ title, father, mohalla, booking }) {
+    prepare({ title, father, mohalla, booking, media }) {
       return {
         title: `${title || 'Unnamed'} s/o ${father || 'Unknown'}`,
         subtitle: `${mohalla || ''} • Booking: ${booking || 'None'}`,
+        media,
       }
     },
   },

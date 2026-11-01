@@ -1,7 +1,7 @@
-# Sayadat-e-Amroha Lineage Record (سیادتِ امروحہ)
+# Sadat-e-Amroha Nasab Nama (ساداتِ امروہہ)
 ### New Computerized Edition (2026) • Standalone Sanity Studio & Next.js Portal
 
-Following the publication of the genealogical book **Kausar-ul-Ansab** by Syed Nazar-e-Hasnain Naqvi (Mohalla Gher Manaf) from Karachi in 1999, this computerized application collects, organizes, and verifies lineage records (*Shijra-e-Nasab*) for the upcoming edition published after 27 years under the leadership of **Syed Sibte Sajid Naqvi** (Mohalla Tripolia).
+Following the publication of the genealogical book **Kausar-ul-Ansab** by Syed Nazar-e-Hasnain Naqvi (Mohalla Gher Manaf) from Karachi in 1999, this computerized application collects, organizes, and verifies lineage records (*Nasab Nama-e-Nasab*) for the upcoming edition published after 27 years under the leadership of **Syed Sibte Sajid Naqvi** (Mohalla Tripolia).
 
 ---
 
@@ -9,7 +9,7 @@ Following the publication of the genealogical book **Kausar-ul-Ansab** by Syed N
 
 This monorepo contains:
 - **`studio/`**: Standalone **Sanity Studio v3** connected to Project ID `rohuunpd` (Dataset: `production`). Full schema for family head, Mohallas of Amroha, dynamic arrays of sons and daughters with marital records, private contact details, and advance booking payments.
-- **`web/`**: Modern **Next.js 16** responsive web portal with bilingual support (Urdu & English), dynamic `+ Add Son` and `+ Add Daughter` controls, bank details card with 1-click copy, live Shijra Card preview, file uploads for deposit receipts & photos, and direct database sync with Sanity Studio.
+- **`web/`**: Modern **Next.js 16** responsive web portal with bilingual support (Urdu & English), dynamic `+ Add Son` and `+ Add Daughter` controls, bank details card with 1-click copy, live Nasab Nama Card preview, file uploads for deposit receipts & photos, and direct database sync with Sanity Studio.
 
 ```
 sayadat-e-amroha/
@@ -18,7 +18,7 @@ sayadat-e-amroha/
 │   ├── sanity.cli.ts        # Sanity CLI config
 │   └── schemaTypes/
 │       ├── index.ts
-│       └── lineageRecord.ts # Complete Shijra & Advance Booking schema
+│       └── lineageRecord.ts # Complete Nasab Nama & Advance Booking schema
 ├── web/                     # Next.js 16 Web Application
 │   ├── src/app/
 │   │   ├── page.tsx         # Interactive bilingual lineage collection form
@@ -57,14 +57,14 @@ Open **[http://localhost:3333](http://localhost:3333)** to view and manage all f
 1. **Dynamic Multiple Sons & Daughters**:
    - Add as many sons as needed with individual details (name, profession, deceased status).
    - Add as many daughters as needed with marital status and husband details (husband's name, father's name, Mohalla/family).
-   - Instant live preview card showing how the Shijra entry looks before submitting.
+   - Instant live preview card showing how the Nasab Nama entry looks before submitting.
 
 2. **Confidentiality by Design**:
    - Phone numbers and home addresses are flagged as confidential and excluded from book printing.
 
 3. **Advance Booking & Payment Details**:
-   - Standard Book: Rs. 5,000 (~250 pages, color print, elegant cover)
-   - Book with Color Photo: Rs. 7,000 (includes passport-size portrait printed in book)
+   - Standard Book: Rs. 6,000 (~250 pages, color print, elegant cover)
+   - Book with Color Photo: Rs. 8,000 (includes passport-size portrait printed in book)
    - Official Bank AL Habib account details (`1318007801332801-9`) with 1-click copy for Title, Account Number, and IBAN.
    - Upload receipt / payment slip directly with WhatsApp confirmation to `0345-2695417`.
 

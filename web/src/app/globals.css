@@ -1,13 +1,229 @@
 @import "tailwindcss";
 @source "../**/*.{ts,tsx}";
 
+/* Urdu font first: it only covers Arabic-script characters, so English falls through to the system font */
+@theme {
+  --font-sans: var(--font-urdu), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-serif: var(--font-urdu), ui-serif, Georgia, serif;
+
+  /* Nastaliq letters are tall; give small text room so lines don't collide */
+  --text-xs--line-height: 1.8;
+  --text-sm--line-height: 1.8;
+  --text-base--line-height: 1.8;
+}
+
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
 }
 
+/* Larger base size (18px): every rem-based Tailwind size scales up with it */
+html {
+  font-size: 112.5%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.7;
+}
+
+/* Form controls don't inherit the page font by default */
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+/* ---------- Family tree (نسب نامہ), drawn like Kausar-ul-Ansab ----------
+   Right-to-left: the eldest child sits on the right. Each family's children hang from a
+   horizontal bar, with an arrow down to every child. */
+.ftree {
+  --line: #475569;
+  --gap: 1.6rem;
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  min-width: max-content;
+  padding: 1rem 1rem 2rem;
+}
+.ftree ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: var(--gap) 0 0;
+}
+.ftree > ul {
+  padding-top: 0;
+}
+.ftree li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: var(--gap) 0.35rem 0;
+}
+/* Two halves of the bar above each child; the second half also draws the drop to the child */
+.ftree li::before,
+.ftree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: var(--gap);
+  border-top: 2px solid var(--line);
+}
+.ftree li::before {
+  inset-inline-start: 0;
+}
+.ftree li::after {
+  inset-inline-end: 0;
+  border-inline-start: 2px solid var(--line);
+}
+.ftree li:first-child::before,
+.ftree li:last-child::after {
+  border-top: none;
+}
+.ftree li:only-child::before {
+  display: none;
+}
+.ftree > ul > li {
+  padding-top: 0;
+}
+.ftree > ul > li::before,
+.ftree > ul > li::after {
+  display: none;
+}
+/* Line from a parent down to its children's bar */
+.ftree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 50%;
+  height: var(--gap);
+  border-inline-start: 2px solid var(--line);
+}
+
+.ftree-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 6.5rem;
+  max-width: 11rem;
+  padding: 0.45rem 0.7rem;
+  border: 1.5px solid #a7f3d0;
+  border-radius: 0.6rem;
+  background: #fff;
+  color: #0f172a;
+  line-height: 1.6;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.06);
+  transition: box-shadow 0.15s;
+}
+.ftree-node:hover {
+  box-shadow: 0 0 0 3px rgb(16 185 129 / 0.25);
+}
+/* Arrow head pointing down at each child, as in the book */
+.ftree li li > .ftree-node::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--line);
+  border-bottom: 0;
+}
+.ftree-node.is-female {
+  border-color: #fbcfe8;
+  background: #fdf2f8;
+}
+.ftree-node.is-owner {
+  border: 2px solid #059669;
+  background: #ecfdf5;
+}
+.ftree-node.is-placeholder {
+  border-style: dashed;
+  border-color: #94a3b8;
+  background: #f8fafc;
+  color: #334155;
+}
+.ftree-node.is-root {
+  border-color: #064e3b;
+  background: #064e3b;
+  color: #fff;
+}
+.ftree-node.is-selected {
+  box-shadow: 0 0 0 3px #f59e0b;
+}
+.ftree-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.ftree-meta {
+  font-size: 0.75rem;
+  color: #475569;
+}
+.ftree-node.is-root .ftree-meta {
+  color: #a7f3d0;
+}
+.ftree-node.is-root {
+  max-width: 24rem;
+}
+/* "صفحہ N": this person's family continues on another printed page */
+.ftree-continue {
+  margin-top: 0.1rem;
+  padding: 0 0.4rem;
+  border-radius: 0.3rem;
+  background: #fef3c7;
+  color: #78350f;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media print {
+  .ftree {
+    --line: #000;
+  }
+  .ftree-node {
+    box-shadow: none !important;
+  }
+}
+
+/* Printing from the tree's Print panel: only the prepared pages are printed */
+.tree-print-layer {
+  display: none;
+}
+@media print {
+  body.printing-tree > *:not(.tree-print-layer) {
+    display: none !important;
+  }
+  body.printing-tree .tree-print-layer {
+    display: block;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .tree-print-page {
+    overflow: hidden;
+    break-after: page;
+  }
+  .tree-print-page:last-child {
+    break-after: auto;
+  }
+  .tree-print-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 10px;
+    color: #475569;
+    border-bottom: 1px solid #cbd5e1;
+  }
 }
