@@ -744,7 +744,7 @@ export default function Home() {
               Manaf) from Karachi in 1999, information is now being collected to publish a new
               computerized edition titled <strong>&ldquo;Sadat-e Amroha Nasab Nama&rdquo;</strong> after 27
               years under the supervision of{' '}
-              <span className="text-amber-200">Syed Sibte Sajid Naqvi</span> (Mohalla Tripolia).
+              <span className="text-amber-200">Syed Sibte Sajid Naqvi</span> (Mohalla Tiripolia).
             </p>
             <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-emerald-200 pt-2 border-t border-emerald-800/80">
               <div className="flex items-center gap-1.5">
