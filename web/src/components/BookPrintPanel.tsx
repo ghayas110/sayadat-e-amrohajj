@@ -39,7 +39,7 @@ interface PrintPage {
   content: React.ReactNode
 }
 
-const noop = () => {}
+const noop = () => { }
 
 function buildChapters(records: TreeRecord[]): Chapter[] {
   const byKhandan = new Map<string, TreeRecord[]>()
@@ -142,8 +142,8 @@ export default function BookPrintPanel({ onClose }: { onClose: () => void }) {
     () =>
       chapters && nodeSizes
         ? chapters.map((c, i) =>
-            planSections(c.roots, nodeSizes[i], { w: page.width / scale, h: page.contentHeight / scale })
-          )
+          planSections(c.roots, nodeSizes[i], { w: page.width / scale, h: page.contentHeight / scale })
+        )
         : null,
     [chapters, nodeSizes, page.width, page.contentHeight, scale]
   )
@@ -167,8 +167,8 @@ export default function BookPrintPanel({ onClose }: { onClose: () => void }) {
     () =>
       plans && sectionSizes && plans.every((plan, i) => sectionSizes[i]?.length === plan.length)
         ? plans.map((plan, i) =>
-            packSections(sectionSizes[i], scale, { w: page.width, h: page.contentHeight }, SECTION_GAP)
-          )
+          packSections(sectionSizes[i], scale, { w: page.width, h: page.contentHeight }, SECTION_GAP)
+        )
         : null,
     [plans, sectionSizes, scale, page.width, page.contentHeight]
   )
@@ -220,7 +220,7 @@ export default function BookPrintPanel({ onClose }: { onClose: () => void }) {
             <p className="text-5xl font-bold text-emerald-900 leading-[2]" dir="rtl">
               ساداتِ امروہہ نسب نامہ
             </p>
-            <p className="text-2xl text-slate-800">Sadat-e-Amroha Nasab Nama</p>
+            <p className="text-2xl text-slate-800">Sadat-e Amroha Nasab Nama</p>
             <p className="text-xl text-slate-700 leading-[2]" dir="rtl">
               خاندانی نسب — کوثر الانساب (1999) کا کمپیوٹرائزڈ ایڈیشن
             </p>
@@ -298,9 +298,8 @@ export default function BookPrintPanel({ onClose }: { onClose: () => void }) {
         ? `Measuring ${chapters?.length ?? 0} family trees…`
         : !packed
           ? 'Laying out pages…'
-          : `${chapters!.length} khandans • ${totalPeople.toLocaleString('en')} people • ${
-              treePageCount! + 2
-            } pages (cover, contents and ${treePageCount} pages of trees)`
+          : `${chapters!.length} khandans • ${totalPeople.toLocaleString('en')} people • ${treePageCount! + 2
+          } pages (cover, contents and ${treePageCount} pages of trees)`
 
   return (
     <>

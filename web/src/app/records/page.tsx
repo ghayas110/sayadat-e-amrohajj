@@ -91,7 +91,7 @@ export default function RecordsPage() {
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="font-bold text-lg">Sadat-e-Amroha Nasab Nama Records</h1>
+              <h1 className="font-bold text-lg">Sadat-e Amroha Nasab Nama Records</h1>
               <p className="text-xs text-amber-200">
                 Database entries captured from the community
               </p>

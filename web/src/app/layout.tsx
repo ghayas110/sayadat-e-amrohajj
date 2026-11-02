@@ -22,9 +22,9 @@ const urduFont = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Sadat-e-Amroha Nasab Nama | ساداتِ امروہہ نسب نامہ',
+  title: 'Sadat-e Amroha Nasab Nama | ساداتِ امروہہ نسب نامہ',
   description:
-    'Official Information Collection Portal for Sadat-e-Amroha Nasab Nama (New Computerized Edition) following Kausar-ul-Ansab (1999).',
+    'Official Information Collection Portal for Sadat-e Amroha Nasab Nama (New Computerized Edition) following Kausar-ul-Ansab (1999).',
 }
 
 export default function RootLayout({

@@ -123,7 +123,7 @@ export default function GalleryPage() {
             </Link>
             <div className="min-w-0">
               <h1 className="font-bold text-base md:text-lg leading-tight">Photo Gallery / تصاویر</h1>
-              <p className="hidden sm:block text-xs text-amber-200">Sadat-e-Amroha Nasab Nama</p>
+              <p className="hidden sm:block text-xs text-amber-200">Sadat-e Amroha Nasab Nama</p>
             </div>
           </div>
           <button

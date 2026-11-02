@@ -279,26 +279,26 @@ export default function Home() {
     setSons(
       r.sons?.length
         ? r.sons.map((s: any) => ({
-            id: s._key,
-            key: s._key,
-            name: s.name || '',
-            occupationOrNotes: s.occupationOrNotes || '',
-            isDeceased: Boolean(s.isDeceased),
-            photo: null,
-          }))
+          id: s._key,
+          key: s._key,
+          name: s.name || '',
+          occupationOrNotes: s.occupationOrNotes || '',
+          isDeceased: Boolean(s.isDeceased),
+          photo: null,
+        }))
         : [emptySon()]
     )
     setDaughters(
       r.daughters?.length
         ? r.daughters.map((d: any) => ({
-            id: d._key,
-            key: d._key,
-            name: d.name || '',
-            maritalStatus: d.maritalStatus === 'unmarried' ? ('unmarried' as const) : ('married' as const),
-            husbandName: d.husbandName || '',
-            husbandFatherName: d.husbandFatherName || '',
-            husbandMohalla: d.husbandMohalla || '',
-          }))
+          id: d._key,
+          key: d._key,
+          name: d.name || '',
+          maritalStatus: d.maritalStatus === 'unmarried' ? ('unmarried' as const) : ('married' as const),
+          husbandName: d.husbandName || '',
+          husbandFatherName: d.husbandFatherName || '',
+          husbandMohalla: d.husbandMohalla || '',
+        }))
         : [emptyDaughter()]
     )
     setPhone(r.contactDetails?.phone || '')
@@ -352,24 +352,24 @@ export default function Home() {
     setSons(
       p.sons.length
         ? p.sons.map((s, i) => ({
-            id: `l${i}`,
-            name: s.name,
-            occupationOrNotes: s.occupationOrNotes || '',
-            isDeceased: Boolean(s.isDeceased),
-            photo: null,
-          }))
+          id: `l${i}`,
+          name: s.name,
+          occupationOrNotes: s.occupationOrNotes || '',
+          isDeceased: Boolean(s.isDeceased),
+          photo: null,
+        }))
         : [emptySon()]
     )
     setDaughters(
       p.daughters.length
         ? p.daughters.map((d, i) => ({
-            id: `l${i}`,
-            name: d.name,
-            maritalStatus: d.maritalStatus === 'unmarried' ? ('unmarried' as const) : ('married' as const),
-            husbandName: d.husbandName || '',
-            husbandFatherName: d.husbandFatherName || '',
-            husbandMohalla: d.husbandMohalla || '',
-          }))
+          id: `l${i}`,
+          name: d.name,
+          maritalStatus: d.maritalStatus === 'unmarried' ? ('unmarried' as const) : ('married' as const),
+          husbandName: d.husbandName || '',
+          husbandFatherName: d.husbandFatherName || '',
+          husbandMohalla: d.husbandMohalla || '',
+        }))
         : [emptyDaughter()]
     )
   }
@@ -693,7 +693,7 @@ export default function Home() {
             </div>
             <div className="min-w-0">
               <h1 className="font-bold text-base md:text-lg leading-tight">
-                Sadat-e-Amroha Nasab Nama
+                Sadat-e Amroha Nasab Nama
               </h1>
               <p className="hidden sm:block text-xs text-amber-200">
                 ساداتِ امروہہ - خاندانی نسب نامہ (کمپیوٹرائزڈ ایڈیشن)
@@ -733,7 +733,7 @@ export default function Home() {
               <span>New Computerized Edition • Date: 22-10-2026</span>
             </div>
             <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-2">
-              Sadat-e-Amroha Nasab Nama
+              Sadat-e Amroha Nasab Nama
             </h2>
             <p className="text-xl md:text-2xl font-serif text-amber-200 mb-4" dir="rtl">
               ساداتِ امروہہ نسب نامہ
@@ -742,7 +742,7 @@ export default function Home() {
               Following the publication of the genealogical book <strong>Kausar-ul-Ansab</strong> by{' '}
               <span className="text-amber-200">Syed Nazar-e-Hasnain Naqvi</span> (Mohalla Gher
               Manaf) from Karachi in 1999, information is now being collected to publish a new
-              computerized edition titled <strong>&ldquo;Sadat-e-Amroha Nasab Nama&rdquo;</strong> after 27
+              computerized edition titled <strong>&ldquo;Sadat-e Amroha Nasab Nama&rdquo;</strong> after 27
               years under the supervision of{' '}
               <span className="text-amber-200">Syed Sibte Sajid Naqvi</span> (Mohalla Tripolia).
             </p>
@@ -1438,11 +1438,10 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
                 <div
                   onClick={() => setBookingType('standard_5000')}
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${
-                    bookingType === 'standard_5000'
-                      ? 'border-emerald-600 bg-emerald-50/50'
-                      : 'border-slate-200 hover:border-slate-300 bg-white'
-                  }`}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${bookingType === 'standard_5000'
+                    ? 'border-emerald-600 bg-emerald-50/50'
+                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
@@ -1463,11 +1462,10 @@ export default function Home() {
 
                 <div
                   onClick={() => setBookingType('with_photo_7000')}
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${
-                    bookingType === 'with_photo_7000'
-                      ? 'border-emerald-600 bg-emerald-50/50'
-                      : 'border-slate-200 hover:border-slate-300 bg-white'
-                  }`}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${bookingType === 'with_photo_7000'
+                    ? 'border-emerald-600 bg-emerald-50/50'
+                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-amber-700">
@@ -1488,11 +1486,10 @@ export default function Home() {
 
                 <div
                   onClick={() => setBookingType('submission_only')}
-                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${
-                    bookingType === 'submission_only'
-                      ? 'border-emerald-600 bg-emerald-50/50'
-                      : 'border-slate-200 hover:border-slate-300 bg-white'
-                  }`}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition ${bookingType === 'submission_only'
+                    ? 'border-emerald-600 bg-emerald-50/50'
+                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
@@ -1514,106 +1511,106 @@ export default function Home() {
 
               {/* Bank Details Display: only when a book is being ordered; the free option pays nothing */}
               {bookingType !== 'submission_only' && (
-              <div className="p-4 rounded-xl bg-slate-900 text-white mb-6">
-                <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
-                  <div className="flex items-center gap-2">
-                    <CreditCard className="w-4 h-4 text-amber-400" />
-                    <span className="font-bold text-sm text-slate-100">
-                      Official Bank Account Details
-                    </span>
-                  </div>
-                  <span className="text-xs text-amber-300">Bank AL Habib Limited</span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                  <div>
-                    <span className="text-slate-300 block">Account Title:</span>
-                    <span className="font-semibold text-slate-100 text-sm">
-                      Syed Sibte Said Naqvi
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-slate-300 block">Branch:</span>
-                    <span className="text-slate-200">
-                      Incholi Federal B Area, Karachi, Pakistan
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between bg-slate-800/80 p-2 rounded-lg">
-                    <div>
-                      <span className="text-slate-300 block text-xs">Account Number:</span>
-                      <span className="font-mono font-bold text-amber-300 text-xs md:text-sm">
-                        1318007801332801-9
+                <div className="p-4 rounded-xl bg-slate-900 text-white mb-6">
+                  <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
+                    <div className="flex items-center gap-2">
+                      <CreditCard className="w-4 h-4 text-amber-400" />
+                      <span className="font-bold text-sm text-slate-100">
+                        Official Bank Account Details
                       </span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => copyToClipboard('1318007801332801-9', 'acc')}
-                      className="p-1.5 hover:bg-slate-700 text-slate-300 rounded transition"
-                      title="Copy Account Number"
-                    >
-                      {copiedField === 'acc' ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </button>
+                    <span className="text-xs text-amber-300">Bank AL Habib Limited</span>
                   </div>
-                  <div className="flex items-center justify-between bg-slate-800/80 p-2 rounded-lg">
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                     <div>
-                      <span className="text-slate-300 block text-xs">IBAN / Code:</span>
-                      <span className="font-mono font-bold text-amber-300 text-xs md:text-sm">
-                        PK BAHL 1318007801332801-9
+                      <span className="text-slate-300 block">Account Title:</span>
+                      <span className="font-semibold text-slate-100 text-sm">
+                        Syed Sibte Said Naqvi
                       </span>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => copyToClipboard('PK BAHL 1318007801332801-9', 'iban')}
-                      className="p-1.5 hover:bg-slate-700 text-slate-300 rounded transition"
-                      title="Copy IBAN"
+                    <div>
+                      <span className="text-slate-300 block">Branch:</span>
+                      <span className="text-slate-200">
+                        Incholi Federal B Area, Karachi, Pakistan
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between bg-slate-800/80 p-2 rounded-lg">
+                      <div>
+                        <span className="text-slate-300 block text-xs">Account Number:</span>
+                        <span className="font-mono font-bold text-amber-300 text-xs md:text-sm">
+                          1318007801332801-9
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => copyToClipboard('1318007801332801-9', 'acc')}
+                        className="p-1.5 hover:bg-slate-700 text-slate-300 rounded transition"
+                        title="Copy Account Number"
+                      >
+                        {copiedField === 'acc' ? (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-between bg-slate-800/80 p-2 rounded-lg">
+                      <div>
+                        <span className="text-slate-300 block text-xs">IBAN / Code:</span>
+                        <span className="font-mono font-bold text-amber-300 text-xs md:text-sm">
+                          PK BAHL 1318007801332801-9
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => copyToClipboard('PK BAHL 1318007801332801-9', 'iban')}
+                        className="p-1.5 hover:bg-slate-700 text-slate-300 rounded transition"
+                        title="Copy IBAN"
+                      >
+                        {copiedField === 'iban' ? (
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 pt-2 border-t border-slate-800/80 text-xs text-slate-300 flex items-center justify-between">
+                    <span>After payment, send deposit slip photo via WhatsApp to:</span>
+                    <a
+                      href="https://wa.me/923452695417"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-emerald-400 font-bold hover:underline"
                     >
-                      {copiedField === 'iban' ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </button>
+                      0345-2695417
+                    </a>
                   </div>
                 </div>
-
-                <div className="mt-3 pt-2 border-t border-slate-800/80 text-xs text-slate-300 flex items-center justify-between">
-                  <span>After payment, send deposit slip photo via WhatsApp to:</span>
-                  <a
-                    href="https://wa.me/923452695417"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-emerald-400 font-bold hover:underline"
-                  >
-                    0345-2695417
-                  </a>
-                </div>
-              </div>
               )}
 
               {/* Uploads and Details */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {bookingType !== 'submission_only' && (
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Upload Payment Slip / Deposit Receipt
-                  </label>
-                  <label className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl cursor-pointer bg-slate-50 transition">
-                    <Upload className="w-5 h-5 text-slate-400 mb-1" />
-                    <span className="text-xs text-slate-600 font-medium text-center">
-                      {paymentSlipFile ? paymentSlipFile.name : 'Choose receipt image or PDF'}
-                    </span>
-                    <input
-                      type="file"
-                      accept="image/*,.pdf"
-                      onChange={(e) => setPaymentSlipFile(e.target.files?.[0] || null)}
-                      className="hidden"
-                    />
-                  </label>
-                </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      Upload Payment Slip / Deposit Receipt
+                    </label>
+                    <label className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl cursor-pointer bg-slate-50 transition">
+                      <Upload className="w-5 h-5 text-slate-400 mb-1" />
+                      <span className="text-xs text-slate-600 font-medium text-center">
+                        {paymentSlipFile ? paymentSlipFile.name : 'Choose receipt image or PDF'}
+                      </span>
+                      <input
+                        type="file"
+                        accept="image/*,.pdf"
+                        onChange={(e) => setPaymentSlipFile(e.target.files?.[0] || null)}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
                 )}
 
                 {bookingType === 'with_photo_7000' && (
@@ -1637,18 +1634,18 @@ export default function Home() {
                 )}
 
                 {bookingType !== 'submission_only' && (
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Transaction ID / Slip Reference Number
-                  </label>
-                  <input
-                    type="text"
-                    value={transactionId}
-                    onChange={(e) => setTransactionId(e.target.value)}
-                    placeholder="e.g. TRX-987654 or Deposit Slip No."
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-none transition"
-                  />
-                </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      Transaction ID / Slip Reference Number
+                    </label>
+                    <input
+                      type="text"
+                      value={transactionId}
+                      onChange={(e) => setTransactionId(e.target.value)}
+                      placeholder="e.g. TRX-987654 or Deposit Slip No."
+                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-none transition"
+                    />
+                  </div>
                 )}
 
                 <div>
@@ -1716,7 +1713,7 @@ export default function Home() {
                 ) : (
                   <>
                     <CheckCircle2 className="w-5 h-5 text-amber-300" />
-                    <span>{editId ? 'Save Changes / تبدیلیاں محفوظ کریں' : 'Submit Sadat-e-Amroha Nasab Nama'}</span>
+                    <span>{editId ? 'Save Changes / تبدیلیاں محفوظ کریں' : 'Submit Sadat-e Amroha Nasab Nama'}</span>
                   </>
                 )}
               </button>

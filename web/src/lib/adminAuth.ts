@@ -8,7 +8,7 @@ const adminPin = () => process.env.ADMIN_PIN?.trim() || ''
 
 // Session token derived from the PIN, so changing ADMIN_PIN signs everyone out
 export const sessionToken = () =>
-  createHash('sha256').update(`sadat-e-amroha-admin:${adminPin()}`).digest('hex')
+  createHash('sha256').update(`sadat-e amroha-admin:${adminPin()}`).digest('hex')
 
 const safeEqual = (a: string, b: string) => {
   const bufA = Buffer.from(a)
